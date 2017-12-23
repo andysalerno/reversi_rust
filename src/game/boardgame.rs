@@ -1,4 +1,5 @@
-use game::board::{ Piece, GameMove, BoardState };
+use game::board::{ Piece, BoardPos, GameMove, BoardState };
+use game::game_rules::GameRules;
 
 pub enum PlayerColor {
     Black,

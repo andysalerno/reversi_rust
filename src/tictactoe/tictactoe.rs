@@ -1,6 +1,6 @@
 use game::game_rules::GameRules;
 
-struct TicTacToe;
+pub struct TicTacToe;
 
 impl GameRules for TicTacToe {
 
