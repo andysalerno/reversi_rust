@@ -1,24 +1,7 @@
-use game::boardgame::BoardGame;
+use game::game_rules::GameRules;
 
-pub struct TicTacToe;
+struct TicTacToe;
 
-pub struct TicTacToePiece;
+impl GameRules for TicTacToe {
 
-impl BoardGame<TicTacToePiece> for TicTacToe {
-
-fn winner(&self) -> Option<WinResult> {
-
-}
-
-fn take_turn(&self) {
-
-}
-
-fn whose_turn(&self) -> PlayerColor {
-
-}
-
-fn get_boardstate(&self) -> &BoardState<TicTacToePiece> {
-
-}
 }

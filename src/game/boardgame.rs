@@ -1,28 +1,51 @@
 use game::board::{ Piece, GameMove, BoardState };
 
-pub enum WinResult {
-    White,
+pub enum PlayerColor {
     Black,
+    White
+}
+
+pub enum GameResult {
+    Win(PlayerColor),
     Tie,
 }
 
-pub enum PlayerColor {
-    White,
-    Black
+pub struct BoardGame<T: GameRules> {
+    player_turn: PlayerColor,
+    score: u32,
+    rules: GameRules,
+    boardstate: BoardState<T>,
+    // move_history: Vec<Move> a history of moves?
 }
 
-pub trait GameAgent<T> 
-where T: Piece<T> {
-    fn pick_move<'a>(&self, board: &BoardState<T>, choices: &'a [GameMove<T>]) -> &'a GameMove<T>;
-    fn color(&self) -> PlayerColor;
+impl <T> BoardGame<T> {
+    fn WithRules<T: GameRules>(rules: T) -> Self {
+        BoardGame{ rules: rules }
+    }
+
+    fn whose_turn(&self) -> PlayerColor {
+        self.player_turn
+    }
+
+    fn reset(&self) {}
+
+    fn legal_moves(&self, player: PlayerColor) -> Vec<BoardPos> {
+        Vec::new()
+    }
+
+    fn boardstate(&self) -> &BoardState<T> {
+        &self.boardstate
+    }
+
+    fn apply_move(&self, pos: BoardPos, piece: Piece) {
+
+    }
+
+    fn winner(&self) -> GameResult {
+        GameResult::Win(PlayerColor::Black)
+    }
 }
 
-pub trait BoardGame<T> {
-    fn winner(&self) -> Option<WinResult>;
-    fn take_turn(&self, agent: GameAgent<T>);
-    fn whose_turn(&self) -> PlayerColor;
-    fn get_boardstate(&self) -> &BoardState<T>;
-}
 
 // design time
 // we have some abstract concepts:

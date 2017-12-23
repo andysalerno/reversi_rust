@@ -1,4 +1,4 @@
-use game::boardgame::GameAgent;
+use game::game_agent::GameAgent;
 use game::board::Piece;
 
 pub struct RandomAgent;

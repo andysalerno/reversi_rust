@@ -7,6 +7,11 @@ pub struct GameMove<T: Piece<T>> {
     pos: (usize, usize)
 }
 
+pub struct BoardPos {
+    x: usize,
+    y: usize,
+}
+
 pub struct BoardState<T> {
     state: Vec<T>,
 }
