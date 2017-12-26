@@ -4,7 +4,7 @@ pub trait Piece<T> {
 
 pub struct GameMove<T: Piece<T>> {
     piece: T,
-    pos: (usize, usize)
+    pos: (usize, usize),
 }
 
 pub struct BoardPos {
@@ -12,6 +12,7 @@ pub struct BoardPos {
     y: usize,
 }
 
+#[derive(Default)]
 pub struct BoardState<T> {
     state: Vec<T>,
 }

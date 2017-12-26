@@ -1,9 +1,9 @@
-use game::board::{ Piece, BoardPos, GameMove, BoardState };
+use game::board::{BoardPos, BoardState, GameMove, Piece};
 use game::game_rules::GameRules;
 
 pub enum PlayerColor {
     Black,
-    White
+    White,
 }
 
 pub enum GameResult {
@@ -11,17 +11,20 @@ pub enum GameResult {
     Tie,
 }
 
-pub struct BoardGame<T: GameRules> {
+pub struct BoardGame<T: GameRules + Default> {
     player_turn: PlayerColor,
-    score: u32,
-    rules: GameRules,
+    rules: T,
     boardstate: BoardState<T>,
     // move_history: Vec<Move> a history of moves?
 }
 
-impl <T> BoardGame<T> {
-    fn WithRules<T: GameRules>(rules: T) -> Self {
-        BoardGame{ rules: rules }
+impl<T: GameRules + Default> BoardGame<T> {
+    fn new() -> Self {
+        BoardGame {
+            player_turn: PlayerColor::Black,
+            boardstate: Default::default(),
+            rules: Default::default(),
+        }
     }
 
     fn whose_turn(&self) -> PlayerColor {
@@ -38,9 +41,7 @@ impl <T> BoardGame<T> {
         &self.boardstate
     }
 
-    fn apply_move(&self, pos: BoardPos, piece: Piece) {
-
-    }
+    fn apply_move(&self, pos: BoardPos, piece: Piece<T::Piece>) {}
 
     fn winner(&self) -> GameResult {
         GameResult::Win(PlayerColor::Black)

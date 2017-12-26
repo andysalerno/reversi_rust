@@ -1,11 +1,11 @@
 use game::boardgame::BoardGame;
 use game::game_agent::GameAgent;
+use game::game_rules::GameRules;
 use game::board::Piece;
 
-pub fn run_game<T: Piece<T>, W, B>(game: BoardGame<T>, white: W, black: B) 
-where W: GameAgent<T>, B: GameAgent<T> {
+pub fn run_game<T: GameRules + Default>(game: BoardGame<T>) {
 
-    game.reset();
+    //game.reset();
 
     // loop {
     //     let player_turn = game.get_player_turn();
@@ -39,7 +39,7 @@ mod tests {
             let player_agent = match player_turn {
                 BoardGame::PlayerColor::Black => &black,
                 BoardGame::PlayerColor::White => &white,
-                _ => panic!("player must be black or white")
+                _ => panic!("player must be black or white"),
             };
 
             let boardstate = game.boardstate();
