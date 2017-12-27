@@ -1,5 +1,5 @@
-use game::board::{BoardPos, BoardState, GameMove, Piece};
-use game::game_rules::{GameResult, GameRules, PlayerColor};
+use game::board::{BoardPos, BoardState, Piece};
+use game::game_rules::{GameMove, GameResult, GameRules, PlayerColor};
 
 
 pub struct BoardGame<T: GameRules + Default> {

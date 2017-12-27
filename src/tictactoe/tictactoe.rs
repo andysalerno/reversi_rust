@@ -1,8 +1,10 @@
 use game::game_rules::{GameMove, GameResult, GameRules, PlayerColor};
 use game::board::BoardState;
 
+#[derive(Clone)]
 pub struct TicTacToe;
 
+#[derive(Clone)]
 pub enum TicTacToePiece {}
 
 impl GameRules for TicTacToe {
@@ -24,6 +26,6 @@ impl GameRules for TicTacToe {
     }
 
     fn next_state(board: &BoardState<Self::Piece>) -> BoardState<Self::Piece> {
-        *board
+        board.clone()
     }
 }

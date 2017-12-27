@@ -8,12 +8,20 @@ pub struct BoardPos {
     y: usize,
 }
 
-#[derive(Default, Clone)]
-pub struct BoardState<T> {
+#[derive(Default)]
+pub struct BoardState<T: Clone> {
     state: Vec<Piece<T>>,
 }
 
-impl<T> BoardState<T> {
+impl<T: Clone> Clone for BoardState<T> {
+    fn clone(&self) -> Self {
+        let cloned = self.state.clone();
+
+        BoardState { state: cloned }
+    }
+}
+
+impl<T: Clone> BoardState<T> {
     pub fn new() -> Self {
         BoardState::<T> {
             state: Default::default(),
