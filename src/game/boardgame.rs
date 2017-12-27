@@ -1,11 +1,13 @@
 use game::board::{BoardPos, BoardState, GameMove, Piece};
 use game::game_rules::GameRules;
 
+#[derive(Copy, Clone)]
 pub enum PlayerColor {
     Black,
     White,
 }
 
+#[derive(Copy, Clone)]
 pub enum GameResult {
     Win(PlayerColor),
     Tie,

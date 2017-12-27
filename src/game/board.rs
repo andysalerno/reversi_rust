@@ -1,9 +1,9 @@
-pub trait Piece<T> {
-    fn value(&self) -> T;
+pub struct Piece<T> {
+    body: T,
 }
 
-pub struct GameMove<T: Piece<T>> {
-    piece: T,
+pub struct GameMove<T> {
+    piece: Piece<T>,
     pos: (usize, usize),
 }
 
@@ -14,5 +14,5 @@ pub struct BoardPos {
 
 #[derive(Default)]
 pub struct BoardState<T> {
-    state: Vec<T>,
+    state: Vec<Piece<T>>,
 }
