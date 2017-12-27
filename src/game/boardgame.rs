@@ -1,17 +1,6 @@
 use game::board::{BoardPos, BoardState, GameMove, Piece};
-use game::game_rules::GameRules;
+use game::game_rules::{GameResult, GameRules, PlayerColor};
 
-#[derive(Copy, Clone)]
-pub enum PlayerColor {
-    Black,
-    White,
-}
-
-#[derive(Copy, Clone)]
-pub enum GameResult {
-    Win(PlayerColor),
-    Tie,
-}
 
 pub struct BoardGame<T: GameRules + Default> {
     player_turn: PlayerColor,

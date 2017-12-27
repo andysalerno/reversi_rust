@@ -1,10 +1,6 @@
+#[derive(Clone)]
 pub struct Piece<T> {
     body: T,
-}
-
-pub struct GameMove<T> {
-    piece: Piece<T>,
-    pos: (usize, usize),
 }
 
 pub struct BoardPos {
@@ -12,7 +8,15 @@ pub struct BoardPos {
     y: usize,
 }
 
-#[derive(Default)]
+#[derive(Default, Clone)]
 pub struct BoardState<T> {
     state: Vec<Piece<T>>,
+}
+
+impl<T> BoardState<T> {
+    pub fn new() -> Self {
+        BoardState::<T> {
+            state: Default::default(),
+        }
+    }
 }

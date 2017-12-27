@@ -2,7 +2,6 @@ mod game;
 mod tictactoe;
 mod agents;
 
-use game::boardgame::GameResult;
 use tictactoe::tictactoe::TicTacToe;
 use agents::random_agent::RandomAgent;
 
