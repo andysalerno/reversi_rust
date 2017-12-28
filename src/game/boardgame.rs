@@ -1,20 +1,25 @@
 use game::board::{BoardPos, BoardState, Piece};
 use game::game_rules::{GameMove, GameResult, GameRules, PlayerColor};
+use game::game_agent::GameAgent;
 
 
-pub struct BoardGame<T: GameRules + Default + Clone> {
+pub struct BoardGame<T: GameRules + Default + Clone, B: GameAgent, W: GameAgent> {
     player_turn: PlayerColor,
     rules: T,
     boardstate: BoardState<T>,
-    // move_history: Vec<Move> a history of moves?
+    black_player: B,
+    white_player: W,
+     // move_history: Vec<Move> a history of moves?
 }
 
-impl<T: GameRules + Default + Clone> BoardGame<T> {
-    fn new() -> Self {
+impl<T: GameRules + Default + Clone, B: GameAgent, W: GameAgent> BoardGame<T, B, W> {
+    fn new(black_player: B, white_player: W) -> Self {
         BoardGame {
             player_turn: PlayerColor::Black,
             boardstate: Default::default(),
             rules: Default::default(),
+            black_player: black_player,
+            white_player: white_player,
         }
     }
 

@@ -35,6 +35,7 @@ pub trait GameRules {
 mod tests {
     use game::board::BoardState;
     use tictactoe::tictactoe::{TicTacToe, TicTacToePiece};
+    use game::game_rules::PlayerColor;
 
     #[test]
     fn simple_gamerules_impl() {

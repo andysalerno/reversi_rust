@@ -4,4 +4,10 @@ use game::board::Piece;
 
 pub struct RandomAgent;
 
-impl<T: GameRules + Default> GameAgent<T> for RandomAgent {}
+impl RandomAgent {
+    fn new() -> Self {
+        RandomAgent {}
+    }
+}
+
+impl GameAgent for RandomAgent {}

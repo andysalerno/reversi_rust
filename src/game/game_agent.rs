@@ -7,6 +7,6 @@ use game::game_rules::GameRules;
 //     fn color(&self) -> PlayerColor;
 // }
 
-pub trait GameAgent<T: GameRules> {
+pub trait GameAgent {
 
 }

@@ -2,8 +2,11 @@ use game::boardgame::BoardGame;
 use game::game_agent::GameAgent;
 use game::game_rules::GameRules;
 use game::board::Piece;
+use agents::random_agent::RandomAgent;
 
-pub fn run_game<T: GameRules + Default + Clone>(game: BoardGame<T>) {
+pub fn run_game<T: GameRules + Default + Clone, B: GameAgent, W: GameAgent>(
+    game: BoardGame<T, B, W>,
+) {
 
     //game.reset();
 
@@ -24,11 +27,15 @@ pub fn run_game<T: GameRules + Default + Clone>(game: BoardGame<T>) {
 }
 
 mod tests {
+    use game::boardgame::BoardGame;
+    use game::game_rules::PlayerColor;
+    use tictactoe::tictactoe::TicTacToe;
+
     #[test]
     fn can_play_simple_game() {
-        //let game = TicTacToe::new();
-
-        let game = BoardGame::WithRules(TicTacToe);
+        let white = RandomAgent::new();
+        let black = RandomAgent::new();
+        let game = BoardGame::<TicTacToe>::new(black, white);
 
         game.reset();
 
