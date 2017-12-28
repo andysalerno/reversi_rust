@@ -2,14 +2,14 @@ use game::board::{BoardPos, BoardState, Piece};
 use game::game_rules::{GameMove, GameResult, GameRules, PlayerColor};
 
 
-pub struct BoardGame<T: GameRules + Default> {
+pub struct BoardGame<T: GameRules + Default + Clone> {
     player_turn: PlayerColor,
     rules: T,
     boardstate: BoardState<T>,
     // move_history: Vec<Move> a history of moves?
 }
 
-impl<T: GameRules + Default> BoardGame<T> {
+impl<T: GameRules + Default + Clone> BoardGame<T> {
     fn new() -> Self {
         BoardGame {
             player_turn: PlayerColor::Black,

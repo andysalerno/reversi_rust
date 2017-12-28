@@ -3,7 +3,7 @@ use game::game_agent::GameAgent;
 use game::game_rules::GameRules;
 use game::board::Piece;
 
-pub fn run_game<T: GameRules + Default>(game: BoardGame<T>) {
+pub fn run_game<T: GameRules + Default + Clone>(game: BoardGame<T>) {
 
     //game.reset();
 

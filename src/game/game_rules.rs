@@ -18,7 +18,7 @@ pub enum GameResult {
 }
 
 pub trait GameRules {
-    type Piece;
+    type Piece: Clone;
 
     fn is_game_over(board: &BoardState<Self::Piece>) -> bool;
 
